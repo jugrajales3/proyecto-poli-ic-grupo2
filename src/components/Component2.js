@@ -1,10 +1,23 @@
+const divStyle = {
+	width: "18rem",
+};
 function Component2() {
-    return (
-      <div>
-        <h2>Componente 2</h2>  
-      </div>
-    );
-  }
-  
-  export default Component2;
-  
+	return (
+		<div>
+			<div
+				className='card'
+				style={divStyle}>
+				<div className='card-body'>
+					<h5 className='card-title'>Jenkins</h5>
+					<h6 className='card-subtitle mb-2 text-muted'>Card subtitle</h6>
+					<p className='card-text'>
+						Some quick example text to build on the card title and make up the
+						bulk of the card's content.
+					</p>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+export default Component2;
