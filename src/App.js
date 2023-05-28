@@ -20,34 +20,44 @@ function App() {
   }, []); 
 
   return (
-    <div className="container-sm">
+    <div className="container-md">
       <div className='row mt-4 mb-4'>
         <div className="App">
           <h1>Grupo 2 - Integración Contínua</h1>
         </div>
       </div>        
       <div className='row mt-4'>
-        <div className='col'>
+        <div className='col mb-2'>
           <Component1 />  
         </div>
-        <div className='col'>
+        <div className='col mb-2'>
           <Component2 />  
         </div>
-        <div className='col'>
+        <div className='col mb-2'>
           <Component3 />
         </div>
-        <div className='col'>
+        <div className='col mb-2'>
           <Component4 />
         </div>
       </div>
-
-      <div>
+      <div className='row mt-4 mb-4 ms-3 me-3'>
         <h1>Lista de Libros</h1>
-        <ul>
-          {libros.map(libro => (
-            <li key={libro.id}>{libro.title} - {libro.author}</li>
-          ))}
-        </ul>
+        <table className="table ">
+          <thead>
+            <tr>              
+              <th scope="col">Título</th>
+              <th scope="col">Autor</th>              
+            </tr>
+          </thead>
+          <tbody>            
+              {libros.map(libro => (
+              <tr>
+                <td key={libro.id}>{libro.title}</td>
+                <td>{libro.author}</td>
+              </tr>
+              ))}      
+          </tbody>
+        </table>
       </div>
     </div>   
   );

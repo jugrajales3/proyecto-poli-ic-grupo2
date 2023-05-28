@@ -1,3 +1,8 @@
+const divStyle = {
+  width: '18rem'
+};
+
+
 function Component3() {
     return (
       <div>
