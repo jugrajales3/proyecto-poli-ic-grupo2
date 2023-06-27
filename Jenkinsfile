@@ -6,7 +6,7 @@ pipeline {
   environment {
     HEROKU_API_KEY = credentials('heroku-api-key')
     IMAGE_NAME = 'jugrajales3/proyecto-poli-ic-grupo2'
-    IMAGE_TAG = 'latest'
+    IMAGE_TAG = 'dev'
     APP_NAME = 'proyecto-poli-ic-grupo2'
   }
   stages {

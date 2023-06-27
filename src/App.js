@@ -8,14 +8,22 @@ import Component4 from './components/Component4';
 function App() {
 
   const [libros, setLibros] = useState([]);
+  const [error, setError] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:8080/api/books')
       .then((response) => {
-        return response.json()
+        if(response.ok){
+          return response.json()
+        }
+        throw response;
       })
       .then((libros) => {
         setLibros(libros)
+      })
+      .catch(error => {
+        console.error("Error fetching data", error);
+        setError(error);
       })
   }, []); 
 
