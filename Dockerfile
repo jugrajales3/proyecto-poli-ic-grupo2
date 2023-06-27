@@ -1,18 +1,20 @@
 # pull de una imagen oficial de Node
 FROM node:20.2.0-alpine3.17
 
-WORKDIR /build
+# se establece el directorio de trabajo
+WORKDIR /app
 
-COPY package.json package.json
-COPY package-lock.json package-lock.json
-RUN npm ci
+# agregar `/app/node_modules/.bin` a la variable de entorno $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY public/ public
-COPY src/ src
-RUN npm run build
+# instalar dependencias
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@5.0.1 -g --silent
 
-FROM httpd:alpine
-WORKDIR /usr/local/apache2/htdocs
-COPY --from=Build /build/build/ .
-RUN chown -R www-data:www-data /usr/local/apache2/htdocs \
-    && sed -i "s/Listen 80/Listen \${PORT}/g" /usr/local/apache2/conf/httpd.conf
+# add app
+COPY . ./
+
+# start app
+CMD ["npm", "start"]
